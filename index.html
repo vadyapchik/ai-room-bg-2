@@ -8,22 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. SETTINGS & VARIABLES (Stax Style) --- */
+        /* --- 1. SETTINGS & VARIABLES --- */
         :root {
-            /* Brand Colors */
-            --bg-body: #081226;       /* Очень темный синий, почти черный */
-            --bg-card: #0F3B68;       /* Основной синий бренда */
-            --bg-card-hover: #164a80; 
-            --accent: #FF8C00;        /* Оранжевый акцент */
+            --bg-body: #081226;
+            --bg-card: #0F3B68;
+            --accent: #FF8C00;
             --text-main: #FFFFFF;
             --text-muted: #A0AEC0;
-            
-            /* Radius & Spacing */
             --radius-lg: 24px;
             --radius-md: 12px;
-            --radius-btn: 50px;       /* Pill shape buttons */
-            
-            /* Container */
+            --radius-btn: 50px;
             --container-width: 1100px;
         }
 
@@ -45,263 +39,122 @@
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 24px;
-        }
-
-        /* --- 2. COMPONENTS --- */
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            background: var(--accent);
-            color: white;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: var(--radius-btn);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(255, 140, 0, 0.39);
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.23);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            border-color: var(--text-main);
-            background: rgba(255,255,255,0.05);
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255, 140, 0, 0.15);
-            color: var(--accent);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- 3. HEADER --- */
-        header {
-            padding: 24px 0;
-            position: absolute;
-            width: 100%;
-            top: 0;
-            z-index: 10;
-        }
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 900;
-            font-size: 1.5rem;
-        }
-        .logo img { height: 40px; }
-        
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--text-main); }
-
-        /* --- 4. HERO SECTION (Stax Style: Center Text, Big Image) --- */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 100px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem; /* Large text */
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(to right, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            font-size: 1.25rem;
-        }
-
-        .hero-image-container {
-            margin-top: 60px;
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .hero-image-container img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Декоративное пятно (Glow) */
-        .glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: var(--bg-card);
-            filter: blur(100px);
-            opacity: 0.4;
-            border-radius: 50%;
-            z-index: -1;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* --- 5. FEATURES GRID --- */
-        .features {
-            padding: 80px 0;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-        .feature-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            transition: 0.3s;
-        }
-        .feature-card:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateY(-5px);
-        }
-        .icon-box {
-            width: 50px; height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-            margin-bottom: 24px;
-        }
-
-        /* --- 6. SPLIT SECTIONS (Zig-Zag) --- */
-        .split-section {
-            padding: 100px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        
-        .split-section.reversed {
-            direction: rtl; /* Трюк для смены порядка колонок */
-        }
-        .split-section.reversed > * {
-            direction: ltr; /* Возвращаем текст в норму */
-        }
-
-        .split-content h2 { font-size: 2.5rem; margin-bottom: 24px; }
-        
-        .split-image {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .split-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        .split-image:hover img { transform: scale(1.03); }
-
-        /* --- 7. CALCULATOR (Card Style) --- */
-        .calc-wrapper {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 60px;
-            margin: 80px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
             position: relative;
             z-index: 2;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        /* --- Buttons & Badges --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 32px; background: var(--accent); color: white;
+            font-weight: 700; text-decoration: none; border-radius: var(--radius-btn);
+            transition: all 0.3s ease; box-shadow: 0 4px 14px 0 rgba(255, 140, 0, 0.39);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 140, 0, 0.23); }
+        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); box-shadow: none; }
+        .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+        .badge {
+            display: inline-block; padding: 6px 16px; background: rgba(255, 140, 0, 0.15);
+            color: var(--accent); border-radius: 50px; font-size: 0.85rem;
+            font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .form-input {
+        /* --- Header --- */
+        header {
+            padding: 24px 0; position: absolute; width: 100%; top: 0; z-index: 10;
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.5rem; }
+        .logo img { height: 40px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+
+        /* --- HERO SECTION UPDATED --- */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 0; /* Убрали нижний отступ, чтобы фото касалось следующей секции */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { max-width: 600px; margin: 0 auto 40px auto; font-size: 1.25rem; }
+
+        /* Новые стили для фото во всю ширину */
+        .hero-image-full {
             width: 100%;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            padding: 16px;
-            border-radius: var(--radius-md);
-            font-size: 1.1rem;
-            font-family: inherit;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent);
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(255,255,255,0.1); /* Тонкая линия сверху для разделения */
         }
 
+        .hero-image-full img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Ограничиваем высоту на огромных экранах и центрируем */
+            max-height: 85vh; 
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .glow {
+            position: absolute; width: 600px; height: 600px; background: var(--bg-card);
+            filter: blur(100px); opacity: 0.4; border-radius: 50%; z-index: 0;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        /* --- Features Grid --- */
+        .features { padding: 80px 0; position: relative; z-index: 2; background: var(--bg-body); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .feature-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px; border-radius: var(--radius-lg); transition: 0.3s;
+        }
+        .feature-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-5px); }
+        .icon-box {
+            width: 50px; height: 50px; background: var(--accent); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 24px;
+        }
+
+        /* --- Split Sections --- */
+        .split-section { padding: 100px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .split-section.reversed { direction: rtl; }
+        .split-section.reversed > * { direction: ltr; }
+        .split-content h2 { font-size: 2.5rem; margin-bottom: 24px; }
+        .split-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .split-image img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
+        .split-image:hover img { transform: scale(1.03); }
+
+        /* --- Calculator --- */
+        .calc-wrapper {
+            background: var(--bg-card); border-radius: var(--radius-lg); padding: 60px;
+            margin: 80px 0; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;
+        }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; position: relative; z-index: 2; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; color: var(--text-muted); }
+        .form-input {
+            width: 100%; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+            color: white; padding: 16px; border-radius: var(--radius-md); font-size: 1.1rem;
+        }
+        .form-input:focus { outline: none; border-color: var(--accent); }
         .price-box {
-            text-align: center;
-            background: rgba(0,0,0,0.2);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center; background: rgba(0,0,0,0.2); padding: 40px;
+            border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);
         }
-        .big-price {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--accent);
-            line-height: 1;
-            margin: 20px 0;
-        }
+        .big-price { font-size: 4rem; font-weight: 900; color: var(--accent); line-height: 1; margin: 20px 0; }
 
-        /* --- 8. FOOTER --- */
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 60px 0;
-            text-align: center;
-            color: var(--text-muted);
-        }
+        /* --- Footer --- */
+        footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 60px 0; text-align: center; color: var(--text-muted); }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .hero h1 { font-size: 2.5rem; }
             .split-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
@@ -339,10 +192,10 @@
                 <a href="#calc" class="btn">Изчисли цена</a>
                 <a href="#tech" class="btn btn-outline">Как работи?</a>
             </div>
+        </div>
 
-            <div class="hero-image-container">
-                <img src="mi-heat-highend-heizfolie-200watt-m-50cm-breit-konfektioniert2-600x600.webp" alt="Mi-Heat Film">
-            </div>
+        <div class="hero-image-full">
+            <img src="main heat 2.png" alt="Mi-Heat Infrared Film Full Width">
         </div>
     </section>
 
@@ -375,7 +228,7 @@
         <div class="split-content">
             <span class="badge" style="background: rgba(46, 204, 113, 0.2); color: #2ecc71;">Здраве & Комфорт</span>
             <h2>Одобрено от най-важните експерти</h2>
-            <p>За разлика от климатиците, Mi-Heat не вдига прах и не изсушава въздуха. Топлината е мека, като слънчевите лъчи.</p>
+            <p>За разлика от климатиците, Mi-Heat не вдига прах и не изсушава въздуха. Топлината е мека, като слънчевата топлина.</p>
             <p>Идеално решение за семейства с малки деца и домашни любимци. Забравете за студените крака завинаги.</p>
         </div>
     </section>
@@ -461,26 +314,15 @@
 
     <script>
         function calculate() {
-            // Входные данные
             const area = parseFloat(document.getElementById('area').value) || 0;
             const thermoPrice = parseFloat(document.getElementById('thermo').value);
             const installPricePerSqm = parseFloat(document.getElementById('install').value);
-
-            // Цены материалов (можно менять)
-            const filmPrice = 35; // Цена за м2 пленки
-            const underlayPrice = 10; // Цена за м2 подложки
-
-            // Расчет (покрытие 80% площади пленкой, 100% подложкой)
+            const filmPrice = 35; 
+            const underlayPrice = 10; 
             const filmArea = area * 0.8;
-            
-            // Формула: (Пленка * 0.8) + (Подложка * 1.0) + Терморегулятор + (Монтаж * Площадь)
             let total = (filmArea * filmPrice) + (area * underlayPrice) + thermoPrice + (area * installPricePerSqm);
-
-            // Вывод
             document.getElementById('finalPrice').innerText = Math.round(total) + " лв";
         }
-
-        // Запуск при старте
         calculate();
     </script>
 
