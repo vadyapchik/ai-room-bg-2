@@ -59,10 +59,27 @@
             font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* --- Header --- */
+        /* --- Header (Sticky Logic) --- */
         header {
-            padding: 24px 0; position: absolute; width: 100%; top: 0; z-index: 10;
+            padding: 20px 0; 
+            position: fixed; /* Фиксируем шапку */
+            width: 100%; 
+            top: 0; 
+            left: 0;
+            z-index: 1000;
+            transition: all 0.4s ease; /* Плавная анимация появления фона */
+            background: transparent; /* Изначально прозрачный */
         }
+
+        /* Класс, который добавляется JS при скролле */
+        header.scrolled {
+            background: rgba(8, 18, 38, 0.9); /* Темный фон */
+            backdrop-filter: blur(12px);      /* Эффект размытия (стекло) */
+            padding: 15px 0;                  /* Чуть уменьшаем высоту */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.5rem; }
         .logo img { height: 40px; }
@@ -72,8 +89,9 @@
 
         /* --- HERO SECTION UPDATED --- */
         .hero {
-            padding-top: 160px;
-            padding-bottom: 0; /* Убрали нижний отступ, чтобы фото касалось следующей секции */
+            /* Увеличиваем отступ сверху, чтобы текст не наезжал на фиксированную шапку */
+            padding-top: 180px; 
+            padding-bottom: 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -87,23 +105,21 @@
 
         .hero p { max-width: 600px; margin: 0 auto 40px auto; font-size: 1.25rem; }
 
-        /* Новые стили для фото во всю ширину */
+        /* Full Width Image Logic */
         .hero-image-full {
             width: 100%;
-            margin-top: 80px;
+            margin-top: 60px;
             position: relative;
             z-index: 1;
-            border-top: 1px solid rgba(255,255,255,0.1); /* Тонкая линия сверху для разделения */
+            /* Линия разделения, если нужна */
+            /* border-top: 1px solid rgba(255,255,255,0.1); */
         }
 
         .hero-image-full img {
             width: 100%;
-            height: auto;
+            height: auto;       /* Автоматическая высота - показывает картинку целиком */
             display: block;
-            /* Ограничиваем высоту на огромных экранах и центрируем */
-            max-height: 85vh; 
-            object-fit: cover;
-            object-position: center;
+            object-fit: contain; /* Гарантирует, что картинка не обрежется */
         }
 
         .glow {
@@ -166,7 +182,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="main-header">
         <div class="container nav-wrapper">
             <div class="logo">
                 <img src="Logo.png" alt="Ai ROOM"> 
@@ -183,6 +199,7 @@
 
     <section class="hero">
         <div class="glow"></div>
+        
         <div class="container">
             <span class="badge">Ново поколение отопление</span>
             <h1>Корейска топлина <br> във вашия дом</h1>
@@ -313,6 +330,7 @@
     </footer>
 
     <script>
+        // 1. Калькулятор
         function calculate() {
             const area = parseFloat(document.getElementById('area').value) || 0;
             const thermoPrice = parseFloat(document.getElementById('thermo').value);
@@ -324,6 +342,16 @@
             document.getElementById('finalPrice').innerText = Math.round(total) + " лв";
         }
         calculate();
+
+        // 2. Логика Header (Выпадающий при скролле)
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled'); // Добавляем темный фон и блюр
+            } else {
+                header.classList.remove('scrolled'); // Убираем (становится прозрачным)
+            }
+        });
     </script>
 
 </body>
