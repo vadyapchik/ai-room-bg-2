@@ -12,7 +12,7 @@
         :root {
             --bg-body: #081226;
             --bg-card: #0F3B68;
-            --accent: #FF8C00;
+            --accent: #FF8C00; /* Фирмен оранжев цвят */
             --text-main: #FFFFFF;
             --text-muted: #A0AEC0;
             --radius-lg: 24px;
@@ -43,7 +43,7 @@
             z-index: 10;
         }
 
-        /* --- LOGO STYLING (Updated) --- */
+        /* --- LOGO STYLING (Updated Colors & Layout) --- */
         .logo { 
             display: flex; 
             align-items: center; 
@@ -52,28 +52,16 @@
         }
         .logo img { height: 38px; }
         
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 0.9;
-        }
-        
         .brand-name {
             font-weight: 900;
-            font-size: 1.6rem;
-            color: #FFFFFF;
-            letter-spacing: -0.03em;
-            text-transform: none; /* Чтобы AIRoom писалось именно так */
+            font-size: 1.8rem;
+            color: #FFFFFF; /* Основен цвят Room */
+            letter-spacing: -0.04em;
+            line-height: 1;
         }
         
-        .brand-sub {
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            opacity: 0.8;
-            letter-spacing: 0.35em;
-            margin-top: 4px;
-            text-transform: uppercase;
+        .brand-accent {
+            color: var(--accent); /* Цвят за AI */
         }
 
         /* --- Header --- */
@@ -119,11 +107,12 @@
         .hero-content { position: relative; z-index: 10; }
         .hero h1 { font-size: 4rem; margin-bottom: 24px; color: #fff; }
 
-        /* --- Other Sections --- */
+        /* --- Features --- */
         .features { padding: 100px 0; background: var(--bg-body); }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .feature-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: var(--radius-lg); }
+        .feature-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); }
 
+        /* --- Calculator --- */
         .calc-wrapper { background: var(--bg-card); border-radius: var(--radius-lg); padding: 60px; margin: 80px 0; }
         .big-price { font-size: 4rem; font-weight: 900; color: var(--accent); }
 
@@ -141,10 +130,7 @@
         <div class="container nav-wrapper">
             <a href="#" class="logo">
                 <img src="Logo.png" alt="AIRoom Logo"> 
-                <div class="logo-text">
-                    <span class="brand-name">AIRoom</span>
-                    <span class="brand-sub">BULGARIA</span>
-                </div>
+                <span class="brand-name"><span class="brand-accent">AI</span>Room</span>
             </a>
             <nav class="nav-links">
                 <a href="#features">Предимства</a>
@@ -213,6 +199,10 @@
 
     <footer>
         <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 20px; text-decoration: none;">
+                <img src="Logo.png" alt="AIRoom Logo"> 
+                <span class="brand-name"><span class="brand-accent">AI</span>Room</span>
+            </a>
             <p>&copy; 2026 AIRoom Bulgaria. Всички права запазени.</p>
         </div>
     </footer>
